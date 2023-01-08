@@ -22,13 +22,15 @@ class RomanNumerals
 
     public static function toRoman($number)
     {
+        if($number <=0 || $number > 3999){
+            return false;
+        }
+
         $result = '';
 
         foreach(static::NUMERALS as $numeral => $arabic){
-            while($number >= $arabic){
+            for(;$number >= $arabic; $number -= $arabic){
                 $result .= $numeral;
-
-                $number -= $arabic;
             }        
         }
 
