@@ -8,25 +8,24 @@ class FactorialTest extends TestCase
 {
     /** 
      * @test
+     * @dataProvider factorials
     */
-    public function it_generates_factorial_for_1()
+    public function it_generates_factorial_for_a_number($number, $expected)
     {
-        $this->assertEquals(1, Factorial::calculate(1));
+        $this->assertEquals($expected, Factorial::calculate($number));
     }
 
-    /** 
-     * @test
-    */
-    public function it_generates_factorial_for_2()
-    {
-        $this->assertEquals(2, Factorial::calculate(2));
-    }
 
-    /** 
-     * @test
-    */
-    public function it_generates_factorial_for_3()
+    public function factorials()
     {
-        $this->assertEquals(6, Factorial::calculate(3));
+        return [
+            [1, 1],
+            [2, 2],
+            [3, 6],
+            [4, 24],
+            [5, 120],
+            [6, 720],
+        ];
+
     }
 }
