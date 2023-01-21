@@ -15,6 +15,17 @@ class FactorialTest extends TestCase
         $this->assertEquals($expected, Factorial::calculate($number));
     }
 
+    /** 
+     * @test
+     * @dataProvider factorials
+    */
+    public function it_generates_factorial_for_a_number_recursively($number, $expected)
+    {
+        $factorial = new Factorial();
+
+        $this->assertEquals($expected, $factorial->calculateRecursive($number));
+    }
+
 
     public function factorials()
     {
